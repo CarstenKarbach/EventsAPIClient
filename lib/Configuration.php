@@ -142,6 +142,24 @@ class Configuration
     protected $sslVerification = true;
 
     /**
+     * Path to client certificate
+     * @var string path to client certificate
+     */
+    protected $certificate = null;
+    
+    /**
+     * Path to client certificate key file
+     * @var string path to client certificate key file
+     */
+    protected $certificateKey = null;
+    
+    /**
+     * passphrase for the certificate key file
+     * @var string passphrase for the certificate key file
+     */
+    protected $certificatePassphrase = null;
+    
+    /**
      * Curl proxy host
      *
      * @var string
@@ -689,6 +707,67 @@ class Configuration
     public function getSSLVerification()
     {
         return $this->sslVerification;
+    }
+    
+    /**
+     * Sets certificate file for client certificate
+     *
+     * @param string $certificate path to client certificate
+     * @return Configuration
+     */
+    public function setCertificate($certificate)
+    {
+    	$this->certificate = $certificate;
+    	return $this;
+    }
+    
+    /**
+     *
+     * @return string certificate file for client certificate
+     */
+    public function getCertificate()
+    {
+    	return $this->certificate;
+    }
+    
+    /**
+     * Set certificate key file
+     * @param string $certificatekey certificate key file
+     * @return \Swagger\Client\Configuration
+     */
+    public function setCertificateKey($certificatekey)
+    {
+    	$this->certificateKey = $certificatekey;
+    	return $this;
+    }
+    
+    /**
+     *
+     * @return string certificate key file
+     */
+    public function getCertificateKey()
+    {
+    	return $this->certificateKey;
+    }
+    
+    /**
+     * Set passphrase for client certificate key file
+     * @param string $passphrase passphrase for client certificate key file
+     * @return \Swagger\Client\Configuration
+     */
+    public function setCertificatePassphrase($passphrase)
+    {
+    	$this->certificatePassphrase = $passphrase;
+    	return $this;
+    }
+    
+    /**
+     *
+     * @return string passphrase for client certificate key file
+     */
+    public function getCertificatePassphrase()
+    {
+    	return $this->certificatePassphrase;
     }
 
     /**

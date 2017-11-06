@@ -178,6 +178,12 @@ class ApiClient
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
         }
+        
+        if(! empty($this->config->getCertificate())){
+        	curl_setopt($curl, CURLOPT_SSLCERT, $this->config->getCertificate());
+        	curl_setopt($curl, CURLOPT_SSLKEY, $this->config->getCertificateKey());
+        	curl_setopt($curl, CURLOPT_SSLKEYPASSWD, $this->config->getCertificatePassphrase());
+        }
 
         if ($this->config->getCurlProxyHost()) {
             curl_setopt($curl, CURLOPT_PROXY, $this->config->getCurlProxyHost());
